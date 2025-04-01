@@ -46,4 +46,16 @@ public class Payload {
                 "  ]\n" +
                 "}";
     }
+
+    public static String addBook() {
+        String payload = "{\n" +
+                "  \"name\": \"Learn Appium Automation with Java\",\n" +
+                "  \"isbn\": \"bcd\",\n" +
+                "  \"aisle\": \"222437\",\n" +
+                "  \"author\": \"John foe\"\n" +
+                "}";
+
+        // You can use this payload in an API request
+        return payload;
+    }
 }

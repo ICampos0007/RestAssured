@@ -56,6 +56,5 @@ public class BasicsTest {
         System.out.println(actualAddress);
         Assert.assertEquals(actualAddress,newAddress);
 
-
     }
 }
