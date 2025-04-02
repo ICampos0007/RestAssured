@@ -70,3 +70,21 @@
 13:08:38.910 [ApplicationImpl pooled thread 20] INFO  com.browserstack.utils.Helpers - null
 13:11:10.697 [ApplicationImpl pooled thread 21] INFO  c.b.l.BrowserStackRunExtension - application
 13:11:10.697 [ApplicationImpl pooled thread 21] INFO  com.browserstack.utils.Helpers - null
+10:56:13.426 [ApplicationImpl pooled thread 14] INFO  c.b.l.BrowserStackRunExtension - application
+10:56:13.427 [ApplicationImpl pooled thread 14] INFO  com.browserstack.utils.Helpers - null
+11:20:17.431 [ApplicationImpl pooled thread 24] INFO  c.b.l.BrowserStackRunExtension - application
+11:20:17.431 [ApplicationImpl pooled thread 24] INFO  com.browserstack.utils.Helpers - null
+11:45:03.096 [ApplicationImpl pooled thread 40] INFO  c.b.l.BrowserStackRunExtension - application
+11:45:03.097 [ApplicationImpl pooled thread 40] INFO  com.browserstack.utils.Helpers - null
+11:45:08.219 [ApplicationImpl pooled thread 32] INFO  c.b.l.BrowserStackRunExtension - testng
+11:45:08.219 [ApplicationImpl pooled thread 32] INFO  com.browserstack.utils.Helpers - null
+11:45:08.219 [ApplicationImpl pooled thread 32] INFO  c.b.l.BrowserStackRunExtension - Agent path: null
+11:48:41.210 [ApplicationImpl pooled thread 32] INFO  c.b.l.BrowserStackRunExtension - testng
+11:48:41.210 [ApplicationImpl pooled thread 32] INFO  com.browserstack.utils.Helpers - null
+11:48:41.212 [ApplicationImpl pooled thread 32] INFO  c.b.l.BrowserStackRunExtension - Agent path: null
+11:49:54.880 [ApplicationImpl pooled thread 44] INFO  c.b.l.BrowserStackRunExtension - testng
+11:49:54.880 [ApplicationImpl pooled thread 44] INFO  com.browserstack.utils.Helpers - null
+11:49:54.881 [ApplicationImpl pooled thread 44] INFO  c.b.l.BrowserStackRunExtension - Agent path: null
+12:21:56.511 [ApplicationImpl pooled thread 28] INFO  c.b.l.BrowserStackRunExtension - testng
+12:21:56.512 [ApplicationImpl pooled thread 28] INFO  com.browserstack.utils.Helpers - null
+12:21:56.512 [ApplicationImpl pooled thread 28] INFO  c.b.l.BrowserStackRunExtension - Agent path: null
