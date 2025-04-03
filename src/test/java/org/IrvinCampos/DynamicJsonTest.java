@@ -11,20 +11,33 @@ import static io.restassured.RestAssured.given;
 
 public class DynamicJsonTest {
     @Test(dataProvider = "BooksData")
-    public void addBook() {
+    public void addBook(String isbn, String aisle) {
         RestAssured.baseURI = "http://216.10.245.166";
         String response = given().header("Content-Type","application/json")
-                .body(Payload.addBook("adsfs","6464")).when().post("/Library/Addbook.php")
+                .body(Payload.addBook(aisle,isbn)).when().post("/Library/Addbook.php")
                 .then().assertThat().statusCode(200)
                 .extract().response().asString();
         JsonPath jsonPath = ReUsableMethods.rawToJson(response);
         String ID = jsonPath.get("ID");
         System.out.println(ID);
     }
+
+    @Test(dataProvider = "BooksData")
+    public void deleteBook(String isbn, String aisle) {
+        RestAssured.baseURI = "http://216.10.245.166";
+        String response = given().header("Content-Type","application/json")
+                .body(Payload.deleteBook(isbn,aisle)).when().post("/Library/DeleteBook.php")
+                .then().assertThat().statusCode(200).extract().response().asString();
+
+        JsonPath jsonPath = ReUsableMethods.rawToJson(response);
+        String ID = isbn + aisle;
+        System.out.println(ID);
+        System.out.println(response);
+    }
     @DataProvider(name = "BooksData")
     public Object[][] getData() {
 //        array = collection of elements
 //        multidimensional array = collection of arrays
-        return new Object[][] {{"ojfwty","9363"}, {"qfsd","1523"}, {"ghfds","86453"}};
+        return new Object[][] {{"ojfwtyz","9363"}, {"qfsdz","1523"}, {"ghfdsz","86453"}};
     }
 }

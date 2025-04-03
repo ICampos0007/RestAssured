@@ -58,4 +58,11 @@ public class Payload {
         // You can use this payload in an API request
         return payload;
     }
+
+    public static String deleteBook(String isbn, String aisle) {
+        return "{\n" +
+                "  \"ID\": \"" + isbn + aisle + "\"\n" +
+                "}";
+    }
+
 }

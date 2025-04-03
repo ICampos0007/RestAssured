@@ -6,18 +6,23 @@ import org.IrvinCampos.Utils.ReUsableMethods;
 import org.IrvinCampos.files.Payload;
 import org.testng.Assert;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class BasicsTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //        validate if add place api is working
 //        given - all input details
 //        when- submit the API resource,http method
 //        then- validate the response
+//        content of the file to String -> content of file can convert into Byt -> Byte data to string
         RestAssured.baseURI = "https://rahulshettyacademy.com/";
         String response = given().queryParam("key","qaclick123").header("Content-Type","application/json")
-                .body(Payload.AddPlace()).when().post("maps/api/place/add/json")
+                .body(Files.readAllBytes(Paths.get("C://Users//Irvin//Downloads//addPlace.json"))).when().post("maps/api/place/add/json")
                 .then().assertThat().statusCode(200).body("scope",equalTo("APP"))
                 .header("server", "Apache/2.4.52 (Ubuntu)").extract().response().asString();
 
