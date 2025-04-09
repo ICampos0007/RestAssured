@@ -1,26 +1,36 @@
 package org.IrvinCampos;
 
 import io.restassured.RestAssured;
+import io.restassured.config.Config;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 
 public class BugTest {
     @Test
-    public void createABugTest() {
+    public void createABugTest() throws IOException {
+        Properties properties = new Properties();
+//        FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "src//main//resources//config.properties");
+        FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties");
+
+        properties.load(fileInputStream);
         RestAssured.baseURI = "https://irvincampos76.atlassian.net/";
-        String createIssueResponse =given().header("Content-Type","application/json ")
-                .header("Authorization","Basic aXJ2aW5jYW1wb3M3NkBnbWFpbC5jb206QVRBVFQzeEZmR0YwRGhiNGdaOHVsZF9BR1FRcGVxT2dWbzd6LVl5T3pYMWcxVlluYXVRODlfcWFYLTB5WjhoSm45bjVWS0NNd2VpNlNiWXJqdEdiVGJ6QUlGZHZiVEs5c0Jkd1BxVFNmc3U2V3NZSWJXMGozaklMS2tSbk8ybWN6WXFfalN6THc5SkNsSUl4dzNwRU1CZjJKSmNsTkRaSXU3eGRNYktFVXlsSC1uMmQtU3ZWSFQ0PTgzRjRBNEU5")
+        String createIssueResponse =given().header("Content-Type","application/json")
+
+                .header("Authorization", properties.getProperty("apiKey"))
                 .body("{\n" +
                         "    \"fields\": {\n" +
                         "       \"project\":\n" +
                         "       {\n" +
                         "          \"key\": \"SCRUM\"\n" +
                         "       },\n" +
-                        "       \"summary\": \"Website items are not working - automation.\",\n" +
+                        "       \"summary\": \"Website items are not working - automation2.\",\n" +
                         "       \"issuetype\": {\n" +
                         "          \"name\": \"Bug\"\n" +
                         "       }\n" +
@@ -35,7 +45,7 @@ public class BugTest {
 //        Add Attachement
         given().pathParam("key", issueID)
                 .header("X-Atlassian-Token","no-check")
-                .header("Authorization","Basic aXJ2aW5jYW1wb3M3NkBnbWFpbC5jb206QVRBVFQzeEZmR0YwRGhiNGdaOHVsZF9BR1FRcGVxT2dWbzd6LVl5T3pYMWcxVlluYXVRODlfcWFYLTB5WjhoSm45bjVWS0NNd2VpNlNiWXJqdEdiVGJ6QUlGZHZiVEs5c0Jkd1BxVFNmc3U2V3NZSWJXMGozaklMS2tSbk8ybWN6WXFfalN6THc5SkNsSUl4dzNwRU1CZjJKSmNsTkRaSXU3eGRNYktFVXlsSC1uMmQtU3ZWSFQ0PTgzRjRBNEU5")
+                .header("Authorization", properties.getProperty("apiKey"))
                 .multiPart("file", new File("C://Users//Irvin//Downloads//Metallic_shield_bug444.jpg")).log().all()
                 .post("rest/api/3/issue/{key}/attachments").then().log().all().assertThat().statusCode(200);
 
