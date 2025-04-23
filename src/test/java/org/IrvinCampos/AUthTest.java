@@ -5,8 +5,11 @@ import org.IrvinCampos.pojo.Api;
 import org.IrvinCampos.pojo.Courses;
 import org.IrvinCampos.pojo.GetCourse;
 import org.IrvinCampos.pojo.WebAutomation;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.get;
@@ -41,10 +44,20 @@ public class AUthTest {
             }
         }
 
+
+        String[] coursetitle = {"Selenium Webdriver Java","Cypress","Protractor"};
+
+        ArrayList<String> arrayList = new ArrayList<String>();
+
+
         List<WebAutomation> getAllCourses = getCourse.getCourses().getWebAutomation();
         for (int i= 0; i < getAllCourses.size(); i++) {
-            System.out.println(getAllCourses.get(i).getCourseTitle());
+            arrayList.add(getAllCourses.get(i).getCourseTitle());
+//            System.out.println(arrayList);
         }
+        ArrayList<String> expectedList = new ArrayList<>(Arrays.asList(coursetitle));
+
+        Assert.assertTrue(arrayList.equals(expectedList));
 
     }
 }
