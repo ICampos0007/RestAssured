@@ -8,6 +8,7 @@ import org.IrvinCampos.pojo.LoginRequest;
 import org.IrvinCampos.pojo.LoginResponse;
 import org.IrvinCampos.pojo.OrderDetails;
 import org.IrvinCampos.pojo.Orders;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -68,6 +69,18 @@ public class ECommerceApiTest {
         RequestSpecification createOrderRequest = given().log().all().spec(CreateOrderRequest).body(orders);
         String responseAddOrder = createOrderRequest.when().post("/api/ecom/order/create-order").then().log().all().extract().response().asString();
         System.out.println(responseAddOrder);
+
+//        Delete Order
+        RequestSpecification DeleteOrderRequest =  new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+                .addHeader("Authorization",token).setContentType(ContentType.JSON).build();
+
+        RequestSpecification DeleteProductRequest =  given().log().all().spec(DeleteOrderRequest).pathParam("productId", productId);
+        String deleteProductResponse = DeleteProductRequest.when().delete("/api/ecom/product/delete-product/{productId}").then().log().all().extract().response().asString();
+
+        JsonPath jsonPath1 = new JsonPath(deleteProductResponse);
+        Assert.assertEquals("Product Deleted Successfully", jsonPath1.get("message"));
+
+
 
     }
 
